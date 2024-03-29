@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Времена года</title>
+  </head>
+<body>
+  <script>
+    var car = {
+    model: "Vasiliy",
+    producer:"LaLaLa", 
+    year : 2024,
+    speed: 80,
+    func1: function(){
+      alert("model: "+this.model+"\nproducer: "+this.producer+"\nyear: "+this.year+"\nspeed: "+this.speed)
+    }
+  }
+
+  function zad2(){
+    car.func1();
+  }
+  function zad1(){
+    var text =  parseInt(document.getElementById('input1').value);
+    var h = parseFloat(text/car.speed);
+    var m = parseFloat((h - Math.floor(h)) * 60);
+    var sec = parseInt((m -Math.floor(m)) * 60);
+    var h1 = Math.floor(h)
+    for(i=0;i<Math.floor(h);i++){
+      if(i%4==0 && i!=0){
+        h1+=1;
+      }
+    }
+    alert("Час на цю відстань "+h1+":"+Math.floor(m)+":"+sec)
+   
+  }
+  var pr = {
+    chus : 40,
+    znam: 8
+  }
+  var dr1 = Object.create(pr);
+  dr1.chus = 30;
+
+  dr1.znam = 5;
+  var dr2 = Object.create(pr);
+  dr2.chus = 12;
+  dr2.znam = 5;
+  function zad3(){
+    alert(dr1.chus +"/"+ dr1.znam+ " + "+dr2.chus +"/"+ dr2.znam+"="+((dr1.chus/dr1.znam) + (dr2.chus/dr2.znam)));
+  }
+  function zad4(){
+    alert(dr1.chus +"/"+ dr1.znam+ " - "+dr2.chus +"/"+ dr2.znam+"="+((dr1.chus/dr1.znam) - (dr2.chus/dr2.znam)));
+  }
+  function zad5(){
+    alert(dr1.chus +"/"+ dr1.znam+ " * "+dr2.chus +"/"+ dr2.znam+"="+((dr1.chus/dr1.znam) * (dr2.chus/dr2.znam)));
+  }
+  function zad6(){
+    alert(dr1.chus +"/"+ dr1.znam+ " / "+dr2.chus +"/"+ dr2.znam+"="+((dr1.chus/dr1.znam) / (dr2.chus/dr2.znam)));
+  }
+  function zad7(){
+    alert( dr1.chus +"/"+ dr1.znam+"="+(dr1.chus/dr1.znam));
+  }
+  var tim = {
+    hour: 0,
+    min: 0, 
+    sec: 0,
+    okr: function(){
+      var h="";
+      var min="";
+      var sec="";
+      var text2 =  this.sec;
+      var text1= this.min;
+      var text= this.hour;
+      while(text2>=60){
+          text2-=60;
+          text1+=1;
+        }
+      while(text1>=60){
+          text1-=60;
+          text+=1;
+        }
+      while(text>=24){
+          text-=24;
+        }
+      this.sec=text2;
+      this.min=text1;
+      this.hour=text;
+    },
+    bub: function(){
+      var h="";
+      var min="";
+      var sec="";
+      if(this.hour<10){
+          h = "0"+this.hour;}
+          else
+          h=this.hour;
+          if(this.min<10){
+          min = "0"+this.min;}
+          else
+          min=this.min;
+          if(parseInt(this.sec)<parseInt(10)){
+          sec = "0"+this.sec;}
+          else{
+          sec=this.sec;
+         }
+      alert(h+":"+min+":"+sec);
+    }
+    
+  }
+  function zad8(){
+    tim.bub();
+  }
+  function zad9(){
+    var text =  parseInt(document.getElementById('input2').value);
+    tim.sec+=text;
+    tim.okr();
+    zad8();
+
+  }
+  function zad10(){
+    var text =  parseInt(document.getElementById('input3').value);
+    tim.min+=text;
+    tim.okr();
+    zad8();
+
+  }
+  function zad11(){
+    var text =  parseInt(document.getElementById('input4').value);
+    tim.hour+=text;
+    tim.okr();
+    zad8();
+  }
+   </script>
+   <button onclick="zad2()">Функция 1!</button>
+   <br>
+   <br>
+   <input id="input1"  placeholder="Відстань у км">
+   <button onclick="zad1()">Нажми!</button>
+   <br>
+   <br>
+   <br>
+   <button onclick="zad3()">Нажми!</button><br>
+   <button onclick="zad4()">Нажми!</button> <br>
+   <button onclick="zad5()">Нажми!</button> <br>
+   <button onclick="zad6()">Нажми!</button><br>
+   <button onclick="zad7()">Нажми!</button>
+   <br>
+   <br>
+   <br>
+   <button onclick="zad8()">Нажми!</button>
+   <br>
+   <input id="input2"  placeholder="кількість секунд">
+   <button onclick="zad9()">Нажми!</button>
+   <br>
+   <br>
+   <input id="input3"  placeholder="кількість хвилин">
+   <button onclick="zad10()">Нажми!</button>
+   <br>
+   <br>
+   <input id="input4"  placeholder=" кількість годин">
+   <button onclick="zad11()">Нажми!</button>
+   <br>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Времена года</title>
+  </head>
+<body>
+  <script>
+    var spis = [
+    { name: "Яблука", count: 30, buy: false },
+    { name: "Хліб", count: 4, buy: true },
+    { name: "Молоко", count: 5, buy: true },
+    { name: "Печиво", count: 10, buy: false },
+    { name: "Банан", count: 43, buy: true },
+    ];
+    function zad1(){
+      var text ="";
+      for(i=0;i<spis.length;i++){
+        if(spis[i].buy==false){
+          text+=spis[i].name +" "+ spis[i].count+"\n";
+        }
+      }
+      for(i=0;i<spis.length;i++){
+        if(spis[i].buy==true){
+          text+=spis[i].name +" "+ spis[i].count+"\n";
+        }
+      }
+      alert(text);
+    }
+    function zad2(){
+    var text =  document.getElementById('input1').value;
+    var text1 =  parseInt(document.getElementById('input2').value);
+    var a =true;
+
+      for(i=0;i<spis.length;i++){
+        if(spis[i].name==text){
+          spis[i].count+=text1;
+          a =false;
+          break;
+        }
+      }
+      if(a){
+        spis.push({ name: text, count: text1, buy: false });
+      }
+      zad1();
+  }
+    function zad3(){
+    var text =  document.getElementById('input3').value;
+    var text1 =  parseInt(document.getElementById('input4').value);
+    var a =true;
+    for(i=0;i<spis.length;i++){
+        if(spis[i].name==text){
+          if(text1>spis[i].count){
+            alert("Product "+ text+" doesn't have that many quantities")
+            a = false;
+          }
+          else{
+            spis[i].count-=text1;
+            spis[i].buy=true;
+            a = false;
+          } 
+          break;
+        }
+      }
+      if(a)
+      alert("Product "+ text+" not find")
+      zad1();
+  }
+    var chek = [
+    { name: "Яблука", count: 3, price: 5 },
+    { name: "Хліб", count: 2, price: 10 },
+    { name: "Молоко", count: 1, price: 17 },
+    { name: "Печиво", count: 2, price: 31 },
+    { name: "Банани", count: 1, price: 18 }
+  ];
+  function zad4(){
+      var text ="";
+      for(i=0;i<chek.length;i++){
+          text+=chek[i].name +" "+ chek[i].count+" за 1: "+chek[i].price+"\nза все "+chek[i].count*chek[i].price+"\n";
+      }
+      alert(text);
+    }
+    function zad5(){
+      var price =0;
+      for(i=0;i<chek.length;i++){
+        price+=chek[i].count*chek[i].price;
+      }
+      alert(price +" грн");
+    }
+    function zad6(){
+      var maxprice =0;
+      for(i=0;i<chek.length;i++){
+        if(maxprice<chek[i].count*chek[i].price)
+          maxprice=chek[i].count*chek[i].price;
+      }
+      alert(maxprice +" грн");
+    }
+    function zad7(){
+      var price =0;
+      var counts =0;
+      for(i=0;i<chek.length;i++){
+        price+=chek[i].count*chek[i].price;
+        counts+=chek[i].count;
+      }
+      alert(parseFloat(price/counts) +" грн");
+    }
+    var cssmas = [
+    { name: "color", value:"red"},
+    { name: "font-size", value: "20px"},
+    { name: "text-align", value: "right"},
+    { name: "text-decoration", value:  "line-through"}
+  ];
+  function zad8(){  
+    var text="";
+    for(i=0;i<cssmas.length;i++){
+      text+=cssmas[i].name+":"+cssmas[i].value + ";";
+    }
+    document.write("<p style='" + text + "'>Цей текст потрібен для завдання 3!</p>");
+  }
+  zad8();
+  var audience = [
+    { name: "Аудиторія 101", seats: 15, faculty: "інформатики" },
+    { name: "Аудиторія 102", seats: 20, faculty: "інформатики" },
+    { name: "Аудиторія 201", seats: 18, faculty: "математики" },
+    { name: "Аудиторія 202", seats: 12, faculty: "математики" },
+    { name: "Аудиторія 301", seats: 10, faculty: "фізики" },
+    { name: "Аудиторія 302", seats: 16, faculty: "фізики" }
+];
+function zad9(){
+      var text ="";
+      for(i=0;i<audience.length;i++){
+          text+=audience[i].name +"\nкількість місць: "+ audience[i].seats+"\nфакультет "+audience[i].faculty+"\n";
+      }
+      alert(text);
+    }
+    function zad10(){
+      var text1 =  document.getElementById('input5').value;
+      var text ="";
+      for(i=0;i<audience.length;i++){
+        if(text1==audience[i].faculty)
+          text+=audience[i].name +"\nкількість місць: "+ audience[i].seats+"\nфакультет "+audience[i].faculty+"\n";
+      }
+      alert(text);
+    }
+    function zad11(){
+      var text1 =  document.getElementById('input6').value;
+      var text2 = parseInt(document.getElementById('input7').value);
+      var text3 =  document.getElementById('input8').value;
+      var text ="";
+      for(i=0;i<audience.length;i++){
+        if(text3==audience[i].faculty&& text2<=audience[i].seats)
+          text+=audience[i].name +"\nкількість місць: "+ audience[i].seats+"\nфакультет "+audience[i].faculty+"\n";
+      }
+      alert(text);
+    }
+    function zad12(){
+      var text ="";
+      audience.sort(function (a, b) {
+        return a.seats - b.seats;
+      });
+      for(i=0;i<audience.length;i++){
+          text+=audience[i].name +"\nкількість місць: "+ audience[i].seats+"\nфакультет "+audience[i].faculty+"\n";
+      }
+      alert(text);
+    }
+    function zad13(){
+      var text ="";
+      audience.sort(function (a, b) {
+       return a.name - b.name;
+      });
+      for(i=0;i<audience.length;i++){
+          text+=audience[i].name +"\nкількість місць: "+ audience[i].seats+"\nфакультет "+audience[i].faculty+"\n";
+      }
+      alert(text);
+    }
+   </script>
+   <p id="textfor3"> </p>
+   <button onclick="zad1()">Список продуктів</button>
+   
+   <br>
+   <br>
+   <input id="input1"  placeholder="назва продукту">
+   <input id="input2"  placeholder=" кількість продукту">
+   <button onclick="zad2()">Нажми!</button>
+   <br>
+   <br>
+   <input id="input3"  placeholder="назва продукту">
+   <input id="input4"  placeholder="скільки придбати">
+   <button onclick="zad3()">Купити!</button>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <button onclick="zad4()">Чек</button>
+   <br>
+   <button onclick="zad5()"> загальнa суми покупки</button>
+   <br>
+   <button onclick="zad6()"> Отримання найдорожчої покупки у чеку</button>
+   <br>
+   <button onclick="zad7()"> Підрахунок середньої вартості одного товару у чеку</button>
+   <br>
+   <br>
+   <br>
+   <br>
+   <button onclick="zad9()">факультети</button>
+   <br>
+   <br>
+   <input id="input5"  placeholder="назва факультету">
+   <button onclick="zad10()">Пошук!</button>
+   <br>
+   <br>
+   <input id="input6"  placeholder="назва групи">
+   <input id="input7"  placeholder="кількість студентів">
+   <input id="input8"  placeholder="назва факультету">
+   <button onclick="zad11()">Пошук!</button>
+   <br>
+   <br>
+   <button onclick="zad12()">Пошук!</button>  
+   <br>
+   <br>
+   <button onclick="zad13()">Пошук!</button>
+</body>
+</html>

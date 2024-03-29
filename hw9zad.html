@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Времена года</title>
+  </head>
+<body>
+  <script>
+   class Circle{
+    constructor(radius) {
+          this.radius = radius;
+    }
+  }
+  let myCircle = new Circle(2);
+  myCircle.radius = 3; 
+  function zad1(){
+    alert(myCircle.radius);
+  }
+  function zad2(){
+    alert(myCircle.radius*2);
+  }
+  function zad3(){
+    alert(Math.PI* Math.pow(myCircle.radius,2));
+  }
+  function zad4(){
+    alert(Math.PI*myCircle.radius*2);
+  }
+  class HtmlElement{
+    constructor(tagName, selfClos = false, content = '', attributes = [], styles = [], nestedElements = []) {
+        this.tagName = tagName;
+        this.selfClos = selfClos;
+        this.content = content;
+        this.attributes = attributes;
+        this.styles = styles;
+        this.nestedElements = nestedElements;
+    }
+    addAttribute(attribute) {
+        this.attributes.push(attribute);
+    }
+    addStyle(style) {
+        this.styles.push(style);
+    }    a
+    addElementToEnd(element) {
+        this.nestedElements.push(element);
+    }
+    addElementToStart(element) {
+        this.nestedElements.unshift(element);
+    }
+    getHtml() {
+        let result = `<${this.tagName}`;
+
+        // Додавання атрибутів
+        this.attributes.forEach(attribute => {
+         result += ` ${attribute}`;
+        });
+        if (this.styles.length > 0) {
+            const stylesString = this.styles.join(';');
+            result += ` style="${stylesString}"`;
+        }
+        result += this.selfClosing ? ' />' : '>';
+        if (!this.selfClosing) {
+            result += this.content;
+        }
+        this.nestedElements.forEach(nestedElement => {
+            result += nestedElement.getHtml();
+        });
+        if (!this.selfClosing) {
+            result += `</${this.tagName}>`;
+        }
+        return result;
+    }
+  }
+  class CssClass {
+    constructor(Name, styles = {}) {
+        this.Name = Name;
+        this.styles = styles;
+    }
+    setStyle(property, value) {
+        this.styles[property] = value;
+    }
+    removeStyle(property) {
+        delete this.styles[property];
+    }
+    getCss() {
+        let cssCode = `.${this.Name} {\n`;
+        for (const [property, value] of Object.entries(this.styles)) {
+            cssCode += `    ${property}: ${value};\n`;
+        }
+        cssCode += `}`;
+        return cssCode;
+    }
+  }
+  class HtmlBlock{
+    constructor(rootElement,cssClasses) {
+        this.cssClasses = [];
+        this.rootElement = rootElement;
+    }
+    getCode() {
+        let css = '<style>\n';
+        for(let i=0;i<cssClases.length;i++)
+        css+= `    ${cssClases.property}: ${cssClases.value};\n`;
+        css += '</style>\n\n';
+
+        let html = this.rootElement.getHtml();
+
+        return css + html;
+    }
+  }
+  const div = new HtmlElement('div', false, '', ['id="wrapper"'], ['display: flex']);
+  const div1 = new HtmlElement('div', false, '', [], ['width: 300px','margin: 10px']);
+  const div2 = new HtmlElement('div', false, '', [], ['width: 300px','margin: 10px']);
+  const h3 = new HtmlElement('h3', false, 'What is Lorem Ipsum?', [], []);
+  const img = new HtmlElement('img', false, '', ['src="image.jpg"', 'alt="Lorem Ipsum"'], ['width: 100%']);
+  const p = new HtmlElement('p', false, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nibh diam, cursus ac interdum eget, maximus non est. Curabitur blandit et massa ac mollis. Phasellus eu dictum elit. Nulla egestas facilisis leo, nec consectetur lacus mollis id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce ultricies mollis dolor, nec mattis urna aliquet eu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a erat turpis. Nam vulputate ipsum vitae est tincidunt aliquam. Nulla rutrum enim quis est malesuada, in ultricies nisl iaculis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent aliquam ante quis risus fringilla egestas. Suspendisse blandit euismod mauris, vel tempor metus varius eget. Nam rutrum mattis tempor. Ut elementum vel risus id porta. Sed eu sapien scelerisque, tempus arcu non, pellentesque elit.', [], ['text-align: justify']);
+  const a = new HtmlElement('a', false, 'More...', ['href="https://www.lipsum.com/"', 'target="_blank"']);
+  div.addElementToEnd(div1);
+  div.addElementToEnd(div2);
+  div1.addElementToEnd(h3);
+  div1.addElementToEnd(img);
+  div1.addElementToEnd(p);
+  div1.addElementToEnd(a);
+
+  div2.addElementToEnd(h3);
+  div2.addElementToEnd(img);
+  div2.addElementToEnd(p);
+  div2.addElementToEnd(a);
+  document.write(div.getHtml());
+  
+  const div_1 = new HtmlElement('div', false, '', ['id="wrapper"','class="wrap"'], ['display: flex']);
+  const div1_1 = new HtmlElement('div', false, '', ['class="block"'], []);
+  const div2_1 = new HtmlElement('div', false, '', ['class="block"'], []);
+  const img_1 = new HtmlElement('img', false, '', ['src="image.jpg"', 'alt="Lorem Ipsum"','class="img"'], []);
+  const p_1 = new HtmlElement('p', false, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nibh diam, cursus ac interdum eget, maximus non est. Curabitur blandit et massa ac mollis. Phasellus eu dictum elit. Nulla egestas facilisis leo, nec consectetur lacus mollis id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce ultricies mollis dolor, nec mattis urna aliquet eu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a erat turpis. Nam vulputate ipsum vitae est tincidunt aliquam. Nulla rutrum enim quis est malesuada, in ultricies nisl iaculis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent aliquam ante quis risus fringilla egestas. Suspendisse blandit euismod mauris, vel tempor metus varius eget. Nam rutrum mattis tempor. Ut elementum vel risus id porta. Sed eu sapien scelerisque, tempus arcu non, pellentesque elit.', ['class="text"'], []);
+  alert("ddd");
+ 
+  div_1.addElementToEnd(div1_1);
+  div_1.addElementToEnd(div2_1);
+  div1_1.addElementToEnd(h3);
+  div1_1.addElementToEnd(img_1);
+  div1_1.addElementToEnd(p_1);
+  div1_1.addElementToEnd(a);
+
+  div2_1.addElementToEnd(h3);
+  div2_1.addElementToEnd(img_1);
+  div2_1.addElementToEnd(p_1);
+  div2_1.addElementToEnd(a);
+  let CssClass1 = new CssClass('wrap', {
+    'display': 'flex'
+  });
+  let CssClass2 = new CssClass('block', {
+    'width': '300px',
+    'margin': '10px'
+  });
+  let CssClass3 = new CssClass('img', {
+    'width': '100%'
+  });
+  let CssClass4 = new CssClass('text', {
+    'text-align': 'justify'
+  });
+  let cssClases =[];
+  cssClases.push(CssClass1);
+  cssClases.push(CssClass2);
+  cssClases.push(CssClass3);
+  cssClases.push(CssClass4);
+  const Block = new HtmlBlock(div_1, cssClases);
+  document.write(Block.getCode());
+  </script>
+    <br>
+    <button onclick="zad1()">повертає радіус кола!</button>
+    <br>  <br>
+    <button onclick="zad2()">повертає діаметр кола!</button>
+    <br>  <br>
+    <button onclick="zad3()">обчислює площу кола!</button>
+    <br>  <br>
+    <button onclick="zad4()">обчислює довжину кола!</button>
+    <br>
+    
+</body>
+</html>

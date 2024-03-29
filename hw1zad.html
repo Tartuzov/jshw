@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Времена года</title>
+
+</head>
+<script>
+    function Hello() 
+    {
+        var text = document.getElementById('input11').value;
+      alert("Привет "+text );
+  }
+  function Year() 
+    {
+        var text = document.getElementById('input1').value;
+        var year =2024-text;
+        alert("Тобі "+year +" років" );
+  }
+  function zad3() 
+    {
+        var text = document.getElementById('input2').value;
+        var year =text*4;
+        alert("Периметр "+ year );
+  }
+  function zad4() 
+    {
+        var text = document.getElementById('input3').value;
+        var year =text*text*3.14;
+        alert("Площа "+ year +"см^2");
+  }
+  function zad5() 
+    {
+        var text = document.getElementById('input4').value;
+        var text1 = document.getElementById('input5').value;
+        var year =text/text1;
+        alert("Швидкість "+ year +" км/год");
+  }
+  function zad6() 
+    {
+        var text = document.getElementById('input6').value;
+        var year =text*0.91;
+        alert(year +" євро");
+  }
+  function zad7() 
+    {
+        var text = document.getElementById('input7').value;
+        var year =Math.floor(text/0.82);
+        alert(year +" файли");
+  }
+  function zad8() 
+    {
+        var text = parseFloat(document.getElementById('input8').value);
+        var text1 = parseFloat(document.getElementById('input9').value);
+        var year =Math.floor(text / text1);
+        alert("Можно купити "+ year +" шоколадки");
+  }
+  function zad9() 
+    {
+        var text = document.getElementById('input10').value;
+        var ch1 =text%10;
+        var ch2 =(text-ch1)/10 %10;
+        var ch3 =(text-ch1-ch2*10)/100 %10;
+        var year = ch1*100+ch2*10+ch3;
+        alert(year);
+  }
+  function zad10() 
+    {   
+        var text = document.getElementById('input12').value;
+        var year = (text % 2 == 0) ? "Парне" : "Непарне";
+        alert(year);
+  }
+  </script>
+<body>
+<body>
+ 1.   Запросіть у користувача його ім’я та виведіть у відповідь
+«Привіт, (його ім’я)!»
+<br>
+<input id="input11">
+<button onclick="Hello()">Нажми!</button>
+<br>
+2. Запросіть у користувача його рік народження, підрахуйте
+скільки йому років і виведіть результат. Поточний рік
+вкажіть у коді як константу
+<br>
+<input id="input1">
+<button onclick="Year()">Нажми!</button>
+<br>
+3. Запросіть у користувача довжину сторони квадрата та
+виведіть його периметр.
+<br>
+<input id="input2">
+<button onclick="zad3()">Нажми!</button>
+<br>
+4. Запросіть у користувача радіус кола та виведіть його площу.
+<br><input id="input3">
+<button onclick="zad4()">Нажми!</button>
+<br>
+5. Запросіть у користувача відстань у кілометрах між двома
+містами та за скільки годин він хоче дістатися. Порахуйте
+швидкість, з якою потрібно рухатися, щоб встигнути вчасно.
+<br><input id="input4" placeholder="відстань">
+<br><input id="input5" placeholder="години">
+<button onclick="zad5()">Нажми!</button>
+<br>
+6.Реалізуйте конвертор валют. Користувач вводить долари,
+програма конвертує у євро. Курс валюти зберігайте у константі.
+<br><input id="input6" placeholder="долари">
+<button onclick="zad6()">Нажми!</button>
+<br>
+7. Користувач вказує обсяг флешки у ГБ. Програма має підрахувати скільки файлів розміром 820 МБ вміститься на
+флешку.
+<br><input id="input7" placeholder="ГБ">
+<button onclick="zad7()">Нажми!</button>
+<br>
+8. Користувач вводить суму грошей у гаманці та вартість
+однієї шоколадки. Програма виводить скільки шоколадок
+може купити користувач і скільки здачі в нього залишиться.
+<br><input id="input8" placeholder="грошей">
+<br><input id="input9" placeholder="ціна шоколадки">
+<button onclick="zad8()">Нажми!</button>
+<br>
+9. Запросіть у користувача тризначне число і виведіть його
+паліндром (число-перевертень). Для вирішення завдання
+вам знадобиться оператор % (залишок від ділення).
+<br><input id="input10" placeholder="***">
+<button onclick="zad9()">Нажми!</button>
+<br>
+10. Запросіть у користувача ціле число і виведіть у відповідь
+парне або непарне. В завданні використовуйте логічні
+оператори і не використовуйте if та switch
+<br><input id="input12" placeholder="******">
+<button onclick="zad10()">Нажми!</button>
+<br>
+</body>
+</html>

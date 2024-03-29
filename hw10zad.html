@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Времена года</title>
+  </head>
+<body>
+  <script>
+    class Marker {
+    constructor(color, Percent) {
+        this.color = color;
+        this.Percent = Percent;
+    }
+    Mark(text){
+        let text1="";
+        for(let i=0;i<text.length;i++){
+            if(text[i]!=' '){
+            if(this.Percent>0){
+                this.Percent-=0.5;
+                text1+=text[i];
+            }
+            else{
+                break;
+            }
+            }
+            else
+            text1+=text[i];
+        }
+        document.write("<span style='color:" + this.color + "'>" + text1 + "</span>");
+     }
+    }
+    class RefillableMarker extends Marker {
+    constructor(color, Percent) {
+        super(color, Percent);
+    }
+    refill() {
+        this.Percent = 100;
+    }
+    Mark(text){
+        super.Mark(text)
+    }
+    }
+    let marker = new RefillableMarker('blue',10);
+    marker.Mark("Taras the best!!!!!!!!Где чернила?!?!?");
+    marker.refill();
+    marker.Mark(" Так лучше!");
+    class ExtendedDate extends Date {
+    constructor(...args) {
+        super(...args);
+    }
+    getDateText() {
+        let months = [
+            'січня', 'лютого', 'березня', 'квітня', 'травня', 'червня',
+            'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'
+        ];
+        const day = this.getDate();
+        const month = months[this.getMonth()];
+        alert( `${day} ${month}`);
+    }
+    getDateTrueFalse(date) {
+
+    if (date.getTime() > this.getTime()) 
+        alert(true);
+    else
+        alert(false);
+    }
+    getYears() {
+        let a = this.getYear();
+        if((a%100!=0 && a%4==0) || a%400==0)
+            alert("Високосний");
+        else
+            alert("Не високосний");
+    }
+    getNextDay(){
+      var text =  this.getFullYear();
+      var text1 = this.getMonth()+1;
+      var text2 = this.getDate();
+      var sec =0;
+      var t =false;      
+      if((text % 4 === 0 && text % 100 !== 0) || (text % 400 === 0))
+      {
+       t = true;
+      }
+      var daysInMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      var daysInMonths1 = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+     text2++;
+     if(t){
+     if(text2>daysInMonths1[text1-1]){
+      text2-=daysInMonths1[text1-1];
+      text1+=1;
+     }
+     if(text1>12){
+      text+=1;
+     }
+    }
+  else{
+    if(text2>daysInMonths[text1-1]){
+      text2-=daysInMonths[text1-1];
+      text1+=1;
+     }
+     if(text1>12){
+      text+=1;
+     }
+  }
+  alert(text+":"+text1+":"+text2);
+    }
+    }
+    let myDate = new ExtendedDate();
+    function zad1(){
+        myDate.getDateText();
+    }
+    function zad2(date) {
+    myDate.getDateTrueFalse(date);
+}   
+    function zad3(){
+        myDate.getYears();
+    }
+    function zad4(){
+        myDate.getNextDay();
+    }
+    class Employee {
+    constructor(name, position) {
+        this.name = name;
+        this.position = position;
+    }
+    }
+    class EmpTable {
+    constructor(employees) {
+        this.employees = employees;
+    }
+    getHtml(){
+        let text ="<table><thead><tr><th>Ім'я</th><th>Посада</th></tr></thead>";
+            for(let i=0;i<this.employees.length;i++){
+                text+="<tr><td>"+this.employees[i].name+"</td><td>"+this.employees[i].position+"</td></tr>"
+            }
+        text+="</table>";
+        document.write(text);
+    }  
+}
+const employees = [
+    new Employee("Іван", "Менеджер"),
+    new Employee("Марія", "Продавець"),
+    new Employee("Петро", "Бухгалтер")
+];
+const styles = {
+    'table': 'width: 100%; border-collapse: collapse;',
+    'th, td': 'border: 1px solid blue; padding: 8px;'
+};
+class StyledEmpTable extends EmpTable{
+    constructor(employees, styles) {
+        super(employees);
+        this.styles = styles;
+    }
+    getStyles(){
+        let stylesstr = "<style>";
+            for (const style in this.styles) {
+                stylesstr += style + " { " + this.styles[style] + " } ";
+            }
+            stylesstr+="</style>";
+            return stylesstr;  
+        }
+        getHtml(){
+            const styles = this.getStyles();
+            const tableHtml = super.getHtml();
+            document.write( styles);
+        }
+    }
+    const table = new StyledEmpTable(employees,styles);
+    table.getHtml();
+    </script>
+  <br>
+  <button onclick="zad1()">Нажми!</button>
+  <br>
+  <br>
+  <button onclick="zad2(new Date(2014, 1, 1))">Прошлый день!</button>
+  <button onclick="zad2(new Date(2025, 1, 1))">Следуйший день!</button>
+  <br>
+  <br>
+  <button onclick="zad3()">Нажми!</button>
+  <br>
+  <br>
+  <button onclick="zad4()">Нажми!</button>
+  <br>
+  
+</body>
+</html>

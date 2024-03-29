@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Времена года</title>
+<script>
+    function zad1() 
+    {
+        var text = document.getElementById('input1').value;
+        var text1 = document.getElementById('input2').value;
+        var text2=0;   
+        for (let i = text; i <= text1; i++) {
+            text2+=parseInt(i);
+        }
+        alert(text2);
+    }
+    function zad2() 
+    {
+        var text = document.getElementById('input3').value;
+        var text1 = document.getElementById('input4').value;
+        var text2=1;   
+        var forwhule = 1;
+        if(text>text1){
+        while(forwhule<=text1){
+          if(text1%forwhule==0 && text%forwhule==0)
+          {
+            text2=forwhule;
+          }
+          forwhule+=1;
+        }}
+        else{
+          while(forwhule<=text){
+            if(text1%forwhule==0 && text%forwhule==0)
+          {
+            text2=forwhule;
+          }
+          forwhule+=1;
+        }
+        }
+        alert(text2);
+    }
+  
+    function zad3() 
+    {
+        var text = document.getElementById('input5').value;
+        var text2="";   
+        var forwhule = 1;
+        while(forwhule<=text){
+          if(text%forwhule==0)
+          {
+            text2+=forwhule+" ";
+          }
+          forwhule+=1;
+        }      
+        alert(text2);
+    }
+    function zad4() 
+    {
+        var text = document.getElementById('input6').value;
+        var text2=0;   
+        var forwhule = 1;
+        while(forwhule<=text){
+            text2+=1;
+          forwhule*=10;
+        }      
+        alert(text2);
+    }
+    function zad5() 
+    {
+      var a = 0;
+      var par =0;
+      var pos =0;
+      var kl=0;
+      do{
+      a = prompt("Введіть число: ");
+      if(a>=0){
+        pos+=1;
+      }
+      if(a%2==0){
+        par+=1;
+      }
+      kl+=1;
+      }while(kl<10)
+      alert("Парних чисел: "+par+"\nНепарних чисел: "+(10-par)+"\nДодатніх чисел: "+pos+"\nВід'ємних чисел: "+(10-pos));
+  }  
+  function zad6() 
+    {
+      var a = 0;
+      var b =0;
+      var pos =0.0;
+      var kl=1;
+      var zn = "";
+      do{
+      a = parseFloat(prompt("Введіть число: "));
+      zn = prompt("Введіть знак(+,-,*,/): ");
+      b = parseFloat(prompt("Введіть число: "));
+      if(zn=="+"){
+        pos = parseFloat(a+b);
+      }
+      else if(zn=="-"){
+        pos =parseFloat(a-b);
+      }
+      else if(zn=="*"){
+        pos =parseFloat(a*b);
+      }
+      else if(zn=="/"){
+        pos =parseFloat(a/b);
+      }
+      alert("Результат: " + pos);
+      kl = prompt("Хочете продовжити?(1-так, 0- ні): ");
+      }while(kl!=0)
+  }
+  function zad7() 
+    {
+      var text = parseInt( document.getElementById('input7').value);
+      if(text>99999 &&text<1000000){
+        var text1 = parseInt( document.getElementById('input8').value);
+        var text2=0;
+        var ch1 =text%10;
+        var ch2 =(text-ch1)/10 %10;
+        var ch3 =(text-ch1-ch2*10)/100 %10;
+        var ch4 =(text-ch1-ch2*10-ch3*100)/1000 %10;
+        var ch5 =(text-ch1-ch2*10-ch3*100-ch4*1000)/10000 %10;
+        var ch6 =(text-ch1-ch2*10-ch3*100-ch4*1000-ch5*10000)/100000 %10;
+        const arr =[ch6,ch5,ch4,ch3,ch2,ch1]
+        var a =1;
+        for(i=text1;i<6;i++){
+          arr.splice(i, 1, arr[i]*100000/a);
+          a*=10;
+        }
+        for(i=0;i<text1;i++){
+          arr.splice(i, 1, arr[i]*100000/a);
+          a*=10;
+        }
+        for(i=0;i<6;i++){
+          text2+=parseInt(arr[i]);
+        }
+        alert(text2);
+      }
+      else{
+        alert("EROR! Число не 6-значне!")
+      }
+    }
+  function zad8(){
+    var daysOfWeek = ["Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота", "Неділя"];
+    var i = 0;
+  do {
+     var userResponse = confirm(daysOfWeek[i] + '. Бажаєте побачити назву наступного дня тижня?');
+      i = (i + 1) % 7; 
+  } while (userResponse);
+  }
+  function zad9(){
+    var table="";
+    for (var i = 2; i <= 9; i++) {
+        table = "Таблиця множення для " + i + ":\n";
+        for (var j = 1; j <= 10; j++) {
+            table += i + " * " + j + " = " + (i * j) + "\n";
+        }
+        table += "\n"; 
+        alert(table);
+    }
+  }
+  function zad10(){
+    var min=0;
+    var max =100;
+    var a=0;
+    var b =-1;
+    alert("Загадайте число від 0 до 100!");
+    do{
+      a=parseInt((min+max)/2);
+      b=parseInt(prompt("Ваше число "+a+"?(0- <; 1- =; 2- >)"))
+        if(b==0){
+          max=max- (max-min)/2;
+        }
+        else if(b==2){
+          min=a;
+        }
+      }while(b!=1)
+      alert("Гра завершена!")
+  }
+</script>
+  </head>
+<body>
+<body>
+    <br>
+    1. Підрахуйте суму всіх чисел у заданому користувачем діапазоні.
+    <br>
+    <input id="input1"  placeholder="min">
+    <input id="input2"  placeholder="max">
+    <button onclick="zad1()">Нажми!</button>
+    <br>
+    2. Запросіть 2 числа і знайдіть тільки найбільший спільний
+    дільник.
+    <br>
+    <input id="input3"  placeholder="a">
+    <input id="input4"  placeholder="b">
+    <button onclick="zad2()">Нажми!</button>
+    <br>
+    3. Запросіть у користувача число та виведіть усі дільники
+    цього числа.
+    <br>
+    <input id="input5"  placeholder="a">
+    <button onclick="zad3()">Нажми!</button>
+    <br>
+    4. Визначте кількість цифр у введеному числі. 
+     <br>
+    <input id="input6"  placeholder="a">
+    <button onclick="zad4()">Нажми!</button>
+    <br>
+    5. Запросіть у користувача 10 чисел і підрахуйте, скільки він
+    ввів додатних чисел, від’ємних та нулів. При цьому підрахуйте також кількість парних і непарних чисел. Виведіть
+    статистику на екран. Враховуйте те, що достатньо однієї
+    змінної (не 10) для введення чисел користувачем.
+    <br>
+    <button onclick="zad5()">Нажми!</button>
+    <br>
+    6. Зацикліть калькулятор. Запросіть у користувача 2 числа і
+    знак, розв’яжіть приклад, виведіть результат і запитайте,
+    чи хоче він розв’язати ще один приклад. І так триватиме
+    доти, доки користувач не відмовиться.
+    <br>
+    <button onclick="zad6()">Нажми!</button>
+    <br>
+    7. Запросіть у користувача число і на скільки цифр його змістити. Змістіть цифри числа та виведіть результат (якщо
+    число 123456 змістити на 2 цифри, то вийде 345612).
+    <br>
+    <input id="input7"  placeholder="******">
+    <input id="input8"  placeholder="а">
+    <button onclick="zad7()">Нажми!</button>
+    <br>
+    8. Зацикліть виведення днів тижня таким чином: «День
+    тижня. Бажаєте побачити назву наступного дня тижня?”,
+    і так доти, доки користувач натискатиме OK.
+    <br>
+    <button onclick="zad8()">Нажми!</button>
+    <br>
+    9. Виведіть таблицю множення для всіх чисел від 2 до 9.
+    Кожне число необхідно помножити на числа від 1 до 10.
+    <br>
+    <button onclick="zad9()">Нажми!</button>
+    <br>
+    10. Гра «Вгадай число». Запропонуйте користувачеві загадати
+    число від 0 до 100 і відгадати його наступним способом: в
+    кожній ітерації циклу поділяєте діапазон чисел навпіл,
+    записуєте результат в N і запитуєте у користувача «Ваше
+    число 	&gt; N, 	&lt; N або == N?». Залежно від відповіді користувача, зменшуєте діапазон. Початковий діапазон від 0 до
+    100, поділяєте навпіл і отримуєте 50. Якщо користувач
+    вказав, що його число 	&gt; 50, змінюєте діапазон числа від 51
+    до 100. І так доти, доки користувач не вибере == N.
+    <br>
+    <button onclick="zad10()">Нажми!</button>
+    <br>
+<br>
+</body>
+</html>
